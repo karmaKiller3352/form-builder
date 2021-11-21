@@ -33,32 +33,38 @@ export const TYPES_MAP: FormElement = {
   [EMAIL]: {
     ...STRING_DEFAULTS,
     fieldName: 'Email',
-    placeholder: 'Email'
+    placeholder: 'Email',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 30, message: 'Maximum 30 characters' } }
   },
   [PHONE]: {
     ...STRING_DEFAULTS,
     fieldName: 'Phone',
-    placeholder: 'Phone'
+    placeholder: 'Phone',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 30, message: 'Maximum 20 characters' } }
   },
   [URL]: {
     ...STRING_DEFAULTS,
     fieldName: 'Url',
-    placeholder: 'Url'
+    placeholder: 'Url',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 30, message: 'Maximum 20 characters' } }
   },
   [DESCRIPTION]: {
     ...TEXTAREA_DEFAULTS,
     fieldName: 'Description',
-    placeholder: 'Description'
+    placeholder: 'Description',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 255, message: 'Maximum 255 characters' } }
   },
   [NOTES]: {
     ...TEXTAREA_DEFAULTS,
     fieldName: 'Notes',
-    placeholder: 'Notes'
+    placeholder: 'Notes',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 128, message: 'Maximum 128 characters' } }
   },
   [SIGNATURE]: {
     ...STRING_DEFAULTS,
     fieldName: 'Signature',
-    placeholder: 'Signature'
+    placeholder: 'Signature',
+    rules: { minLength: { value: 3, message: 'At least 3 characters' }, maxLength: { value: 10, message: 'Maximum 10 characters' } }
   },
   [DATE]: {
     ...DATE_DEFAULTS,

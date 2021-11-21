@@ -1,23 +1,10 @@
 import React, { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Wrapper, Sidebar, Content, ElementWrapper, FieldWrapper, RemoveIcon, Button, Form } from './ui';
 
 import { FormItem, IFormItemList, IFormPreview, IFormValues } from './interfaces';
 import { EMAIL, PHONE, URL, DESCRIPTION, NOTES, SIGNATURE, DATE, TYPES_MAP } from "./constants";
 import FormField from "./FormField";
-
-
-const validationSchema = yup.object().shape({
-  [EMAIL]: yup.string().email(),
-  [URL]: yup.string().url(),
-  [PHONE]: yup.string().max(20).min(3),
-  [DESCRIPTION]: yup.string().max(255).min(0),
-  [NOTES]: yup.string().max(128).min(3),
-  [SIGNATURE]: yup.string().max(15).min(2),
-  [DATE]: yup.date()
-})
 
 
 const formFields = [
@@ -42,7 +29,13 @@ const FormPreview: React.FC<IFormPreview> = ({ fields, removeHandler, isEditMode
       {fields.map(
         (item: FormItem, index) => (
           <FieldWrapper>
-            <FormField fieldInfo={TYPES_MAP[item]} name={item} control={control} isEditMode={isEditMode} />
+            <FormField 
+              rules={TYPES_MAP[item].rules}
+              fieldInfo={TYPES_MAP[item]}
+              name={item+index}
+              control={control} 
+              isEditMode={isEditMode} 
+            />
 
             {isEditMode && <RemoveIcon onClick={() => removeHandler(index)}/>}
           </FieldWrapper>
@@ -59,7 +52,6 @@ const FormPage = () => {
 
   const { control, formState } = useForm<IFormValues>({
     mode: "onChange",
-    resolver: yupResolver(validationSchema),
   });
 
   const clickHandler = useCallback(

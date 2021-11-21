@@ -17,12 +17,12 @@ const FieldComponent: React.FC<IFieldComponent> = (props) => {
   }
 }
 
-const FormField: React.FC<IFormField> = ({ control, fieldInfo, name, isEditMode }) => {
+const FormField: React.FC<IFormField> = ({ control, fieldInfo, name, isEditMode, rules }) => {
   const { field, fieldState } = useController({
     control,
-    name
+    name,
+    rules,
   });
-
 
   return <FieldComponent fieldInfo={fieldInfo} field={field} error={fieldState.error} isEditMode={isEditMode} />
 

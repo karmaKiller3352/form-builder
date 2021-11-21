@@ -26,7 +26,8 @@ export interface IFormField {
   fieldInfo: IField,
   name: string,
   control: any,
-  isEditMode: boolean
+  isEditMode: boolean,
+  rules: any
 }
 
 
